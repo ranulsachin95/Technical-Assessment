@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/author")
 public class AuthorController {
     @Autowired
@@ -19,7 +20,7 @@ public class AuthorController {
         return authorService.getAllAuthors();
     }
     @GetMapping("/{id}")
-    public Optional<Author> getAuthorById(@PathVariable long id){
+    public Author getAuthorById(@PathVariable long id){
         return authorService.getAuthorById(id);
 
     }

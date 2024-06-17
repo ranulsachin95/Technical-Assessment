@@ -5,9 +5,12 @@ import com.technical.assignment.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/book")
 public class BookController {
 
@@ -16,7 +19,7 @@ public class BookController {
 
 
     @GetMapping("/{id}")
-    public Optional<Book> getBookById(@PathVariable long id){
+    public Book getBookById(@PathVariable long id){
         return bookService.getBookById(id);
 
     }
@@ -31,7 +34,7 @@ public class BookController {
 
     }
     @GetMapping
-    public Page<Book> getAllBooks(@RequestParam(defaultValue = "0")  int page,
+    public List<Book> getAllBooks(@RequestParam(defaultValue = "0")  int page,
                                   @RequestParam(defaultValue = "5")  int size
     ){
         return bookService.getAllBooks(page,size);
