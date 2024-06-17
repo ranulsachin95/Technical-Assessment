@@ -16,9 +16,9 @@ import java.util.Optional;
 public class BookService {
     @Autowired
     private BookRepository bookRepository;
-    public List<Book> getAllBooks(int page, int size){
-        Pageable paging = PageRequest.of(page, size);
-        return bookRepository.findAll(paging).getContent();
+    public Page<Book> getAllBooks(int page, int size){
+        Pageable pageable = PageRequest.of(page, size);
+        return bookRepository.findAll(pageable);
     }
     public Book getBookById(long id){
         return bookRepository.findById(id)

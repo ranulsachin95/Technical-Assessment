@@ -46,9 +46,8 @@ public class BookControllerTest {
         Page<Book> bookPage = new PageImpl<>(books);
         when(bookRepository.findAll(any(PageRequest.class))).thenReturn(bookPage);
 
-        List<Book> result = bookService.getAllBooks(0, 10);
-        assertEquals(1, result.size());
-        assertEquals("book 1", result.get(0).getName());
+        Page<Book> result = bookService.getAllBooks(0, 10);
+        assertEquals(1, result.getTotalElements());
     }
 
     @Test

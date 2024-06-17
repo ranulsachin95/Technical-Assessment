@@ -34,7 +34,7 @@ public class BookController {
 
     }
     @GetMapping
-    public List<Book> getAllBooks(@RequestParam(defaultValue = "0")  int page,
+    public Page<Book> getAllBooks(@RequestParam(defaultValue = "0")  int page,
                                   @RequestParam(defaultValue = "5")  int size
     ){
         return bookService.getAllBooks(page,size);
